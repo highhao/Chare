@@ -4,7 +4,7 @@ SELECT * FROM 訂貨主檔
 SELECT * FROM 訂貨明細
 SELECT * FROM 產品資料
 SELECT * FROM 客戶
---//公司交易,財務,金錢流量
+--//公司交易,財務,金錢流量--
 
 SELECT 
 A.客戶編號, --I
