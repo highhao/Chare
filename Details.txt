@@ -1,0 +1,35 @@
+SELECT  FROM F0101 
+;
+SELECT * FROM F4201
+;
+SELECT A.SDDRQJ,B.SHDRQJ,A.SDECST,B.SHTOTC FROM F4211 A JOIN F4201 B ON B.SHAN8=A.SDAN8
+;
+SELECT 
+A.ABAN8,    --客戶代碼
+A.ABALKY,   --工號
+A.ABTAX,    --統一編號
+A.ABALPH,   --公司全名
+A.ABAT1,    --種類代碼
+A.ABNOE,    --員工人數
+B.SHKCOO,   --下單公司(單據號碼)
+B.SHDOCO,   --單據(訂單號碼,發票)
+B.SHDCTO,   --訂單類型
+B.SHSHAN,   --出貨地址
+J_N(B.SHDRQJ),   --日期-要求
+B.SHPTC,   --付款條件代碼
+B.SHRYIN,  --付款方式
+B.SHOTOT,  --金額-訂單總額
+B.SHTOTC,  --金額-總成本
+B.SHCRCD,  --貨幣代碼-來源
+C.SDKCOO,  --下單公司(單據號碼)
+C.SDDOCO,  --單據(下單號碼,發票)
+C.SDDCTO,  --訂單類型
+C.SDLNID,  --行號
+C.SDDSC1,  --說明
+
+
+FROM F0101 A
+LEFT JOIN F4201 B 
+ON B.SHAN8=A.ABAN8
+LEFT JOIN F4211 C
+ON C.SDAN8 =A.ABAN8
