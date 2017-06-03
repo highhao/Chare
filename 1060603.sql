@@ -1,0 +1,32 @@
+--CREATE OR REPLACE VIEW v59x_4311_Try AS
+SELECT 
+  A.PDKCOO,--下單公司 (單據號碼)
+  A.PDDOCO,--單據 (訂單號碼、發票等)
+  A.PDDCTO,--訂單類型
+  A.PDLNID,--行號
+  A.PDLNTY,--行類型
+  CEIL(J_N(A.PDTRDJ)/100) DATE_CHANGE,--日期 - 訂單/ 異動
+  CEIL(J_N(A.PDDRQJ)/100) DATE_CLAIM,--日期 - 要求
+  A.PDUOM1,--計量單位 - 主要
+  A.PDITM,--料號 - 短
+  A.PDLITM,--第二料號
+  A.PDDSC1,--說明
+  A.PDDSC2,--說明 - 行 2
+  A.PDUORG/10000 ORDER_QTY,--單位 - 訂購/ 異動數量
+  A.PDUREC/10000 CLOSE_QTY,--單位 - 已驗收
+  A.PDUOPN/10000 OPEN_QTY,--單位 - 未結
+  A.PDMCU, --業務單位
+  A.PDAEXP,--金額-總價格
+  C.WWMLNM PO_MAN, --採購人員號碼
+  D.WWMLNM VENDER_NAME, --公司
+  E.WPPH1 VENDER_TEL --聯絡電話
+FROM F4311 A
+LEFT JOIN F0111 C ON C.WWAN8=A.PDANBY
+LEFT JOIN F0111 D ON D.WWAN8=A.PDAN8
+LEFT JOIN F0115 E ON E.WPAN8=A.PDAN8 AND E.WPRCK7=1
+
+;
+SELECT A.PDAEXP
+FROM V59X_4311_Try A
+;
+
